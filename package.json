@@ -4,8 +4,8 @@
   "description": "test",
   "main": "index.js",
   "scripts": {
-    "start-backend": "cd backend && nodemon",
-    "start-frontend": "cd frontend && npm run start"
+    "start-backend": "cd backend && nodemon --exec babel-node src/index",
+    "start-frontend": "cd frontend && npm run serve"
   },
   "author": "",
   "license": "ISC",
