@@ -2,7 +2,7 @@ const express = require('express');
 const BookModel = require('../models/book');
 const router = express.Router();
 
-router.get("/books", async (request, response) => {
+router.get("/books", async (_, response) => {
     try {
      const books = await BookModel.find({});
       response.status(200).send(books);
@@ -25,13 +25,9 @@ router.get("/books/:id", async (request, response) => {
 router.get("/books/title/:title", async (request, response) => {
     try {
         const partialTitle = new RegExp(request.params.title, 'i');
-        const book = await BookModel.findOne({ title: { $regex: partialTitle } });
-        
-        if (book) {
-            response.status(200).send(book);
-        } else {
-            response.status(404).send({ message: "Book not found" });
-        }
+        const books = await BookModel.find({ title: { $regex: partialTitle } });
+
+        response.status(200).send(books);
     } catch (error) {
         response.status(500).send({ error });
     }
