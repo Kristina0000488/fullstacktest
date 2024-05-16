@@ -4,7 +4,8 @@
   "description": "test",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "start-backend": "cd backend && nodemon",
+    "start-frontend": "cd frontend && npm run start"
   },
   "author": "",
   "license": "ISC",
